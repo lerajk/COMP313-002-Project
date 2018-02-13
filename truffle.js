@@ -1,5 +1,7 @@
 
 var HDWalletProvider = require("truffle-hdwallet-provider");
+require('babel-register');
+require('babel-polyfill');
 var mnemonic = "";
 module.exports = {
   networks : {
