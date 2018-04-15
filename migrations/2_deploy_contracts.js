@@ -1,6 +1,14 @@
 var Token = artifacts.require("./SimpleToken.sol");
-var Crowdsale = artifacts.require("./Crowdsale.sol");
+//var Crowdsale = artifacts.require("./Crowdsale.sol");
 
+
+module.exports = function(deployer) {
+
+     deployer.deploy(Token); 
+
+}
+
+/*
 
 module.exports = function(deployer) {
 
@@ -18,3 +26,5 @@ module.exports = function(deployer) {
   }); 
 
 };
+
+*/

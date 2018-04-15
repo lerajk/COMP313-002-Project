@@ -2,7 +2,7 @@
 pragma solidity ^0.4.18;
 
 
-import "../node_modules/zeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
+import "zeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 
 
 /**
@@ -13,11 +13,11 @@ import "../node_modules/zeppelin-solidity/contracts/token/ERC20/StandardToken.so
  */
 contract SimpleToken is StandardToken {
 
-  string public constant name = "SimpleToken"; // solium-disable-line uppercase
-  string public constant symbol = "SIM"; // solium-disable-line uppercase
+  string public constant name = "CentennialDollars"; // solium-disable-line uppercase
+  string public constant symbol = "CD"; // solium-disable-line uppercase
   uint8 public constant decimals = 18; // solium-disable-line uppercase
 
-  uint256 public constant INITIAL_SUPPLY = 10000 * (10 ** uint256(decimals));
+  uint256 public constant INITIAL_SUPPLY = 1000 * (10 ** uint256(decimals));
 
   /**
    * @dev Constructor that gives msg.sender all of existing tokens.

@@ -51,10 +51,44 @@ contract('Crowdsale', function(accounts) {
       let tiersInitialized = await crowdsale.tiersInitialized();
       assert(tiersInitialized == false);
 
-
     	})
 
 	})
 
-})
+    describe('Token sale', async () => { 
+
+        let START_TIME;
+        let END_TIME;
+        let RATE = 1000; //1 ETH = 1000 CC for base rate 
+        let token;
+        let WALLET = accounts[8];
+        let OWNER = accounts[0]
+        let NON_OWNER = accounts[1]
+        let crowdsale;
+   
+       before(async function() {
+       await advanceBlock()
+      })
+
+        //WIP
+        beforeEach(async () => {
+        START_TIME = latestTime();
+        END_TIME  = latestTime() + duration.weeks(1);
+        token = await Token.new();
+        crowdsale = await Crowdsale.new(START_TIME, END_TIME, RATE, WALLET, token.address)
+        let discounts = [200, 300];
+        let from = [START_TIME, duration.days(3)]
+        let to = [duration.days(2), duration.days(5)]
+        //let duration = [latestTime() + duration.days(1), latestTime() + duration.days(2),latestTime() + duration.weeks(1)]
+        let duration = END_TIME;
+        await crowdsale.initTiers(discounts, from, to, duration, { from : OWNER })
+        await token.transfer(crowdsale.address, ether(1000));
+        //await increaseTimeTo(START_TIME + duration.days(1));
+        
+      }
+
+    })
+
+
+}) //contract ends
 
